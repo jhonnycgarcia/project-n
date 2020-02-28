@@ -1,0 +1,103 @@
+include ./auth.layout.pug
+
+block content
+  div(class="animated fadeInLeft")
+    h1(class="text-center") SignUp
+    form(action='/auth/signUp', method='POST')
+
+      div(class="form-group") 
+        label(for="email") Email adress
+        if email === undefined
+          - email = {msg:'',value:'',error:false}
+        if email.value === '@'
+          - email.value = ''
+        input(
+          type="email"
+          class=  email.error ? "form-control is-invalid" : "form-control"
+          id="email"
+          name="email"
+          placeholder="Email@email.com"
+          value= email.value
+        )
+        if email.error
+          div(
+            class="invalid-feedback"
+          )= email.msg
+
+
+
+        
+      
+      div(class="row")
+        div(class="form-group col-md-6")
+          label(for="name") Name
+          if name === undefined
+            - name = {msg:'',value:'',error:false}
+          input(
+            type="text"
+            class= name.msg ? "form-control is-invalid" : "form-control"
+            id="name"
+            name="name"
+            placeholder="Name"
+            value=name.value
+          )
+          if name.msg
+            div(
+              class="invalid-feedback"
+            )= name.msg
+
+        div(class="form-group col-md-6")
+          label(for="lastname") Last name
+          if lastname === undefined
+            - lastname = {msg:'',value:'',error:false}
+          input(
+            type="text"
+            class= lastname.msg ? "form-control is-invalid" : "form-control"
+            id="lastname"
+            name="lastname"
+            placeholder="Last name"
+            value= lastname.value
+          )
+          if lastname.msg
+            div(
+              class="invalid-feedback"
+            )= lastname.msg
+          
+      div(class="form-group") 
+        label(for="username") Username
+        if username === undefined
+            - username = {msg:'',value:'',error:false}
+        input(
+          type="text"
+          class= username.msg ? "form-control is-invalid" : "form-control"
+          id="username"
+          name="username"
+          placeholder="User"
+          value= username.value
+        )
+        if username.msg
+          div(
+            class="invalid-feedback"
+          )= username.msg
+
+      div(class="form-group")
+        label(for="password") Password
+        if password === undefined
+            - password = {msg:'',value:'',error:false}
+        input(
+          type="password"
+          class= password.msg ? "form-control is-invalid" : "form-control"
+          id="password"
+          name="password"
+          placeholder="Password"
+        )
+        if password.msg
+          div(
+            class="invalid-feedback"
+          )= password.msg
+
+      p(class="float-right") ¿Tienes cuenta? ingresa 
+        a(href="/auth/signIn") aquí
+      button(type="submit" class="btn btn-primary") Registre
+
+

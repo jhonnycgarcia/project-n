@@ -1,0 +1,37 @@
+include ./auth.layout.pug
+
+block content
+  div(class="animated fadeInRight")
+    h1(class="text-center") SignIn
+    form(action='/auth/signIn', method='POST')
+      div(class="form-group") 
+        label(for="username") Username
+        if username === undefined
+          - username = {msg:'',value:'',error:false}
+        input(
+          type="text"
+          class=  username.error ? "form-control is-invalid" : "form-control"
+          id="username"
+          name="username"
+          placeholder="User"
+          value= username.value)
+        if username.error
+          div(class="invalid-feedback")= username.msg
+
+      div(class="form-group")
+        label(for="password") Password
+        if password === undefined
+          - password = {msg:'',value:'',error:false}
+        input(
+          type="password"
+          class=  password.error ? "form-control is-invalid" : "form-control"
+          id="password"
+          name="password"
+          placeholder="Password")
+        if password.error
+          div(class="invalid-feedback")= password.msg
+
+      p(class="float-right") ¿No tienes cuenta?  
+        a(href="/auth/signUp") registrate!
+      button(type="submit" class="btn btn-primary") LogIn
+
