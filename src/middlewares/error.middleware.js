@@ -1,5 +1,5 @@
 module.exports = (err, req, res, next) => {
-    return res.render('error', {
+    return res.render('error/error', {
         message: 'Error',
         error: {
             status: 500,
