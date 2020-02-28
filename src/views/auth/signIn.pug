@@ -3,7 +3,7 @@ include ./auth.layout.pug
 block content
   div(class="animated fadeInRight")
     h1(class="text-center") SignIn
-    form(action='/auth/signIn', method='POST')
+    form(action='/v1/api/auth/signIn', method='POST')
       div(class="form-group") 
         label(for="username") Username
         if username === undefined
@@ -32,6 +32,6 @@ block content
           div(class="invalid-feedback")= password.msg
 
       p(class="float-right") ¿No tienes cuenta?  
-        a(href="/api/v1/auth/signUp") registrate!
+        a(href="/v1/api/auth/signUp") registrate!
       button(type="submit" class="btn btn-primary") LogIn
 

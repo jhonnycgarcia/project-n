@@ -3,7 +3,7 @@ include ./auth.layout.pug
 block content
   div(class="animated fadeInLeft")
     h1(class="text-center") SignUp
-    form(action='/auth/signUp', method='POST')
+    form(action='/v1/api/auth/signUp', method='POST')
 
       div(class="form-group") 
         label(for="email") Email adress
@@ -97,7 +97,7 @@ block content
           )= password.msg
 
       p(class="float-right") ¿Tienes cuenta? ingresa 
-        a(href="/api/v1/auth/signIn") aquí
+        a(href="/v1/api/auth/signIn") aquí
       button(type="submit" class="btn btn-primary") Registre
 
 
