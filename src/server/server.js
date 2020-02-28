@@ -4,6 +4,8 @@ const path = require('path'); // Lib Path
 const cookieParser = require('cookie-parser'); // Lib Cookie-Parse
 const logger = require('morgan'); // Lib Morgan
 
+const { NotFoundMiddleware } = require('../middlewares');
+
 const Routes = require('../routes');
 
 let app = express();
@@ -26,6 +28,9 @@ app.use(express.static(path.join(__dirname, '../../public')));
 
 
 // Routes
-app.use(Routes);
+app.get('/', (req, res, next) => res.redirect('/api/v1/auth'));
+app.use('/api/v1', Routes);
+// Not Found
+app.use(NotFoundMiddleware);
 
 module.exports = app;

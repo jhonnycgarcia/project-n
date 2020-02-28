@@ -18,8 +18,9 @@ const authController = new AuthController();
 /** 
  * Routes
  */
-router.get('', function(req, res, next) {
-    res.redirect('/auth/signIn');
+router.get('/', function(req, res, next) {
+    res.render('auth/signIn');
+    // res.redirect('/auth/signIn');
 });
 
 router.get('/signIn', (req, res, next) => { // Render de la vista
