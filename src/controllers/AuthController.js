@@ -17,7 +17,6 @@ class AuthController {
         const { body, formErrors } = req;
         const vError = validationResult(req);
         if (vError.errors.length > 0) {
-            console.log(vError.errors);
             let data = { // Formatear la data para devolverla al formulario
                 username: {
                     value: body.username,
