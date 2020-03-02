@@ -1,3 +1,3 @@
 module.exports = {
-    AuthController: require('./AuthController')
+    AuthController: require('./auth.controller')
 }
