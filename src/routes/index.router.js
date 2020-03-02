@@ -28,14 +28,14 @@ apiRouter // --- Server Middlewares
 const { // --- Load Routes
     AuthRouter,
     HomeRouter,
-    UserRouter
+    EmpleadoRouter
 } = require('./index');
 
 // --- API Routes Defined
 apiRouter.get('/', (req, res, next) => res.redirect('/v1/api/auth'));
 apiRouter.use('/auth', AuthRouter);
 apiRouter.use('/home', HomeRouter);
-apiRouter.use('/user', UserRouter);
+apiRouter.use('/empleados', EmpleadoRouter);
 
 // --- Server Routes Defined
 router.get('/', (req, res, next) => res.redirect('/v1/api/auth'));

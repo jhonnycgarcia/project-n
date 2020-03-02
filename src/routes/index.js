@@ -1,5 +1,5 @@
 module.exports = {
     AuthRouter: require('./auth.router'),
-    UserRouter: require('./user.router'),
+    EmpleadoRouter: require('./empleado.router'),
     HomeRouter: require('./home.router')
 }
