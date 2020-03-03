@@ -1,9 +1,7 @@
 module.exports = (err, req, res, next) => {
+    console.log(err);
     return res.render('error/error', {
         message: 'Error',
-        error: {
-            status: 500,
-            stack: 'Internal server error'
-        }
+        error: err
     });
 }
