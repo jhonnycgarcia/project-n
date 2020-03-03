@@ -1,0 +1,74 @@
+extends ../layout.pug
+
+block content
+    h1 Empleados 
+        small(class="text-muted") Registrar
+    hr
+    h5(class="text-center text-muted") 
+        ins Datos Personales
+
+    form(class="mt-4" onSubmit="return false;")
+        div(class="form-row")
+            div(class="form-group col-md-6")
+                label(for="nombre") Nombre
+                input(type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre")
+
+            div(class="form-group col-md-6")
+                label(for="apellido") Apellido
+                input(type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido")
+
+        div(class="form-group")
+            label(for="direccion") Direccion
+            input(type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección")
+
+        div(class="form-row")
+            div(class="form-group col-md-6")
+                label(for="sexo") Sexo
+                select(id="sexo" name="sexo" class="form-control")
+                    option(selected value="N/A") Seleccione ...
+                    option(value="M") Masculino
+                    option(value="F") Femenino
+
+            div(class="form-group col-md-6")
+                label(for="fecha_nacimiento") Fecha nacimiento
+                input(type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="dd/mm/YYYY")
+
+        div(class="form-row")
+            div(class="form-group col-md-6")
+                label(for="telefono") Telefono
+                input(type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono")
+
+            div(class="form-group col-md-6")
+                label(for="correo") Correo
+                input(type="text" class="form-control" id="correo" name="correo" placeholder="Correo")
+        hr
+        h5(class="text-center text-muted") 
+            ins Datos Laborales
+
+        div(class="form-row")
+            div(class="form-group col-md-6")
+                label(for="departamento") Departamento
+                select(id="departamento" name="departamento" class="form-control")
+                    option(selected value="0") Seleccione ...
+                    option(value="1") Dep1
+                    option(value="2") Dep2
+
+            div(class="form-group col-md-6")
+                label(for="cargo") Cargo
+                select(id="cargo" name="cargo" class="form-control")
+                    option(selected value="0") Seleccione ...
+                    option(value="1") Cargo1
+                    option(value="2") Cargo2
+
+        div(class="form-row")
+            div(class="form-group col-md-6")
+                label(for="sueldo") Sueldo
+                input(type="text" class="form-control" id="sueldo" name="sueldo" placeholder="Sueldo")
+
+            div(class="form-group col-md-6")
+                label(for="fecha_ingreso") Fecha ingreso
+                input(type="date" class="form-control" id="fecha_ingreso" name="fecha_ingreso" placeholder="dd/mm/YYYY")
+
+
+        button(type="submit" class="btn btn-block btn-outline-primary") Registrar
+        a(class="btn btn-block btn-outline-danger mb-4" href="/v1/api/empleados/list") Cancelar

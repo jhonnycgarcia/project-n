@@ -10,12 +10,16 @@ class EmpleadoController {
         const { pageSize, pageNumber } = req.query;
         try {
             const empleados = await empleadoService.getAll(pageSize, pageNumber);
-            res.render('empleado/list', {...empleados });
+            res.render('empleado/listEmpleado', {...empleados });
             // res.json({ ok: true, err: null, data: empleados });
 
         } catch (err) {
             res.status(err.status).json({ ok: false, err });
         }
+    }
+
+    async registrarEmpleado(req, res, next) {
+        res.send('into registrarEmpleado');
     }
 }
 
