@@ -47,11 +47,8 @@ class Db {
     /** ==============================================
      *          Execute Query
      ============================================== */
-    async ejecutarQuery(query, callback) {
-        instance.cn.query(query, (err, result) => {
-            if (err) { return callback(err, null); }
-            callback(null, result);
-        });
+    async ejecutarQuery(query) {
+        return await instance.cn.query(query);
     }
 
 
