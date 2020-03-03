@@ -10,7 +10,8 @@ class EmpleadoController {
         const { pageSize, pageNumber } = req.query;
         try {
             const empleados = await empleadoService.getAll(pageSize, pageNumber);
-            res.json({ ok: true, err: null, data: empleados });
+            res.render('empleado/list', {...empleados });
+            // res.json({ ok: true, err: null, data: empleados });
 
         } catch (err) {
             res.status(err.status).json({ ok: false, err });
