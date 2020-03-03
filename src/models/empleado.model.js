@@ -13,8 +13,9 @@ class EmpleadoModel {
         return count['rows'][0]['count'];
     }
 
-    async getPagesNumber(pageSize, countAll) {
-        return await Math.ceil(countAll / pageSize);
+    async getTotalPagesNumber(pageSize) {
+        const countAll = await this.getCountAll();
+        return Math.ceil(countAll / pageSize);
     }
 
     async getAll(pageSize = 5, pageNumber = 1) {
@@ -27,13 +28,20 @@ class EmpleadoModel {
             LIMIT ${pageSize}
             OFFSET ${offset} `;
 
+        const totalPage = await this.getTotalPagesNumber(pageSize);
+
         const result = await conection.ejecutarQuery(query);
-        const count = await this.getCountAll();
-        const totalPage = await this.getPagesNumber(pageSize, count);
-
-        if (pageNumber > totalPage) { throw new ValidationError('pgNumber is invalid', 400); }
-
         return { empleados: result['rows'], rowCount: result['rowCount'], pageSize, pageNumber, totalPage };
+    }
+
+    async getById(id) {
+        const query = `SELECT oid, id_empleado, nombre, apellido, TO_CHAR(fecha_ingreso,'yyyy-MM-dd') AS fecha_ingreso, 
+            TO_CHAR(fecha_egreso,'yyyy-MM-dd') AS fecha_egreso, departamento, status, sueldo, cargo, 
+            TO_CHAR(fecha_nacimiento,'yyyy-MM-dd') AS fecha_nacimiento, sexo, edad, antiguedad
+        FROM public.empleados WHERE oid = ${id} LIMIT 1`;
+        const empleado = await conection.ejecutarQuery(query);
+        if (empleado['rowCount'] === 0) { throw new ValidationError(`Not found regist with id "${id}" `, 400); }
+        return {...empleado['rows'][0] };
     }
 }
 
