@@ -3,6 +3,9 @@ extends ../layout.pug
 block content
     h1 Empleados 
         small(class="text-muted") Listado
+        a(class="btn btn-outline-primary float-right" href="/v1/api/empleados/registre")
+            i(class="fas fa-user-plus fa-1x")
+
     div(class="table-responsive mt-4")
         table(class="table")
             thead(class="thead-dark")
